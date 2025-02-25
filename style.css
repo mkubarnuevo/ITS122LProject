@@ -1,0 +1,158 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    color: #1E1E1E;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    color: inherit;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================================================================== */
+/* TOPBAR */
+/* ===================================================================== */
+.topbar {
+    height: 10%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: 5px solid #F57E9A;
+}
+
+.topbar nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.left-topbar {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.left-topbar button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.left-topbar button img {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+}
+
+.left-topbar .title {
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+
+.right-topbar {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.right-topbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.right-topbar ul li {
+    margin-right: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right-topbar button {
+    padding: 8px 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-family: inherit;
+    color: inherit; /* Inherit text color */
+}
+
+.right-topbar button img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.right-topbar button:hover,
+.right-topbar button.active {
+    font-weight: bold;
+}
+/* ===================================================================== */
+
+/* Main Content */
+.content {
+    height: 90%;
+    background-color: #ffffff;
+    overflow: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .left-topbar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .right-topbar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .right-topbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .right-topbar ul li {
+        margin: 5px;
+    }
+
+    .topbar nav {
+        flex-direction: column;
+    }
+
+    .topbar {
+        height: auto;
+    }
+
+    .content {
+        height: calc(100% - auto);
+    }
+}
