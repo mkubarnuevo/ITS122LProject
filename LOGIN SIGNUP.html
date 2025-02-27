@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cat/Dog Cares | Signup or Login</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <main>
+                <div class="authentication">
+                    <div class="authenticationLeft">
+                        <!-- maglagay kau d2 ng kung ano -->
+                    </div>
+                    <div class="authenticationRightContainer">
+                        <img src="images/logo.jpg" alt="Profile">
+                        <br>
+                        <br>
+                        <br>
+                        <div class="authenticationRight">
+                            <button class="authButton active" data-auth="signup">Signup</button>
+                            <button class="authButton" data-auth="login">Login</button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="bothAuthForm">
+                            <div id="signupForm" class="authForm active">
+                                <div class="nameFields">
+                                    <div>
+                                        <label for="fName">First Name:</label>
+                                        <input type="firstName" placeholder="First Name" class="authInput">
+                                    </div>
+                                    <div>
+                                        <label for="lName">Last Name:</label>
+                                        <input type="lastName" placeholder="Last Name" class="authInput">
+                                    </div>
+                                </div>
+                                <label for="email">Email:</label>
+                                <input type="email" placeholder="Email" class="authInput">
+                                <label for="password">Password:</label>
+                                <input type="password" placeholder="Password" class="authInput">
+                                <br>
+                                <button class="authSubmit">Signup</button>
+                            </div>
+                            <div id="loginForm" class="authForm">
+                                <label for="email">Email:</label>
+                                <input type="email" placeholder="Email" class="authInput">
+                                <label for="password">Password:</label>
+                                <input type="password" placeholder="Password" class="authInput">
+                                <br>
+                                <button class="authSubmit">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

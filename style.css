@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/inter');
+
 body, html {
     height: 100%;
     margin: 0;
@@ -28,7 +30,7 @@ body, html {
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    border-bottom: 5px solid #F57E9A;
+    border-bottom: 5px solid #1E1E1E;
 }
 
 .topbar nav {
@@ -101,7 +103,7 @@ body, html {
     align-items: center;
     font-weight: normal;
     font-family: inherit;
-    color: inherit; /* Inherit text color */
+    color: inherit;
 }
 
 .right-topbar button img {
@@ -116,12 +118,334 @@ body, html {
 }
 /* ===================================================================== */
 
-/* Main Content */
+/* ===================================================================== */
+/* MAIN CONTENT */
+/* ===================================================================== */
 .content {
     height: 90%;
-    background-color: #ffffff;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
+/* ===================================================================== */
+
+/* ===================================================================== */
+/* PROFILE.html */
+/* ===================================================================== */
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #F57E9A;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.logoSide {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoSide img {
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.profileSide {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.profileSide h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.profileFields {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profileFields label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 18px;
+}
+
+.profileFields input[type="text"],
+.profileFields input[type="tel"],
+.profileFields input[type="number"] {
+    width: calc(100% - 16px);
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+.submitButton {
+    background-color: #F57E9A;
+    color: white;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    width: calc(100% - 16px);
+    display: block;
+    margin-top: 15px;
+}
+
+.submitButton:hover {
+    background-color: #e66181;
+}
+/* ===================================================================== */
+
+/* ===================================================================== */
+/* LOGIN SIGNUP.html */
+/* ===================================================================== */
+.authentication {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+}
+
+.authenticationLeft {
+    width: 40%;
+    background-color: #696969;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authenticationRightContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.authenticationRightContainer img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.authenticationRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.authButtons {
+    display: flex;
+}
+
+.authButton {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-bottom-color 0.3s ease;
+    color: #333;
+}
+
+.authButton.active {
+    border-bottom-color: #F57E9A;
+    font-weight: bold;
+}
+
+.authButton:hover {
+    border-bottom-color: #ddd;
+}
+
+.bothAuthForm {
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.bothAuthForm {
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.authForm {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+}
+
+.authForm.active {
+    display: flex;
+}
+
+.authForm label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.authInput {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.authInput:focus {
+    outline: none;
+    border-color: #F57E9A;
+}
+
+.authSubmit {
+    padding: 16px 24px;
+    background-color: #F57E9A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.authSubmit:hover {
+    background-color: #e66181;
+}
+
+.nameFields {
+    display: flex;
+    gap: 10px;
+}
+
+.nameFields div {
+    flex: 1;
+}
+/* ===================================================================== */
+
+/* ===================================================================== */
+/* ABOUT US.html */
+/* ===================================================================== */
+.aboutusContainer {
+    display: flex;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.aboutLeft {
+    width: 60%;
+    background-color: #F57E9A;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.aboutLeft h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.aboutLeft p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.aboutRight {
+    width: 40%;
+    background-color: #5e5e5e;
+}
+/* ===================================================================== */
+
+/* ===================================================================== */
+/* SUPPORT US.html */
+/* ===================================================================== */
+.supportusContainer {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.supportLeft {
+    width: 50%;
+    background-color: #ffffff;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.supportLeft h1 {
+    color: #1E1E1E;
+    font-size: 1.8em;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.supportRight {
+    width: 50%;
+    background-color: #F57E9A;
+    padding: 40px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.supportRight h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.supportRight h2 {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #1E1E1E;
+}
+
+/* ===================================================================== */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -154,5 +478,97 @@ body, html {
 
     .content {
         height: calc(100% - auto);
+        flex-direction: column;
     }
+
+    /* ===================================================================== */
+    /* PROFILE.html */
+    /* ===================================================================== */
+    .profileContainer {
+        flex-direction: column;
+    }
+
+    .logoSide, .profileSide {
+        width: 100%;
+    }
+
+    .logoSide {
+        height: 30vh;
+    }
+
+    .profileSide {
+        justify-content: flex-start;
+    }
+    /* ===================================================================== */
+
+    /* ===================================================================== */
+    /* LOGIN SIGNUP.html */
+    /* ===================================================================== */
+    .authentication {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .authenticationLeft, .authenticationRightContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .authenticationLeft {
+        padding: 40px 0;
+    }
+
+    .authenticationRightContainer {
+        padding: 20px 0;
+    }
+
+    .authenticationRight {
+        flex-direction: column;
+    }
+
+    .bothAuthForm {
+        width: 90%;
+    }
+    /* ===================================================================== */
+
+    /* ===================================================================== */
+    /* ABOUT US.html */
+    /* ===================================================================== */
+    .aboutusContainer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .aboutLeft,
+    .aboutRight {
+        width: 100%;
+    }
+
+    .aboutLeft {
+        padding: 20px;
+    }
+
+    .aboutRight {
+        height: 300px;
+    }
+    /* ===================================================================== */
+
+    /* ===================================================================== */
+    /* SUPPORT US.html */
+    /* ===================================================================== */
+    .supportusContainer {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .supportLeft,
+    .supportRight {
+        width: 100%;
+    }
+
+    .supportLeft,
+    .supportRight {
+        padding: 20px;
+    }
+    /* ===================================================================== */
 }
