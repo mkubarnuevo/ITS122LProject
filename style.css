@@ -369,7 +369,7 @@ body, html {
 .aboutLeft {
     width: 60%;
     background-color: #F57E9A;
-    padding: 40px;
+    padding: 100px 40px 40px; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -393,6 +393,49 @@ body, html {
 .aboutRight {
     width: 40%;
     background-color: #5e5e5e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+}
+
+.aboutRight img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+}
+/* ===================================================================== */
+
+/* ===================================================================== */
+/* HOMEPAGE.html */
+/* ===================================================================== */
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.adopt-section {
+    background-color: #F57E9A;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.adopt-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}
+
+.adopt-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    margin: 10px 0 0;
 }
 /* ===================================================================== */
 
