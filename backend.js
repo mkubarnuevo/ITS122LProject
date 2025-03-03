@@ -5,10 +5,10 @@ const connectDB = require("./DATABASE CONNECTION");
 const authenticationRoute = require("./AUTHENTICATION");
 
 const app = express();
-const PORT = 5500;
+const PORT = 3000;
 
 app.use(cors({
-    origin: "http://127.0.0.1:3000",
+    origin: "http://127.0.0.1:5500",
     credentials: true
 }));
 app.use(express.json());
@@ -27,7 +27,6 @@ app.use(
     })
 );
 
-
 const startServer = async () => {
     try {
         const db = await connectDB();
@@ -45,6 +44,5 @@ const startServer = async () => {
         process.exit(1);
     }
 };
-
 
 startServer();

@@ -1,4 +1,4 @@
-document.getElementById("signupSubmit").addEventListener("click", async () => {
+signupButton.addEventListener("click", async () => {
     console.log("Signup button clicked!");
 
     const firstName = document.getElementById("firstName").value;
@@ -6,24 +6,30 @@ document.getElementById("signupSubmit").addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("Data:", { firstName, lastName, email, password });
+    console.log("Captured Data:", { firstName, lastName, email, password });
 
-    const response = await fetch("http://127.0.0.1:3000/signup", { 
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, password }),
-        credentials: "include"
-    });    
+    try {
+        console.log("Sending request to backend...");
+        const response = await fetch("http://127.0.0.1:5500/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firstName, lastName, email, password }),
+        });
 
-    const data = await response.json();
+        console.log("Request sent. Waiting for response...");
+        const data = await response.json();
+        console.log("Server Response:", data);
 
-    if (response.ok) {
-        alert("Signup successful!");
-        window.location.reload();
-    } else {
-        alert(data.message);
+        if (response.ok) {
+            alert("Signup successful!");
+            window.location.href = "success.html";
+            alert(data.message);
+        }
+    } catch (error) {
+        console.error("Error during signup:", error);
     }
 });
+
 
 document.getElementById("loginSubmit").addEventListener("click", async () => {
     const email = document.getElementById("loginEmail").value;
