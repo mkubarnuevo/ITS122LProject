@@ -1,0 +1,30 @@
+{
+  "name": "its122lproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkubarnuevo/ITS122LProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkubarnuevo/ITS122LProject/issues"
+  },
+  "homepage": "https://github.com/mkubarnuevo/ITS122LProject#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "install": "^0.13.0",
+    "mongodb": "^6.14.0",
+    "mongoose": "^8.11.0",
+    "npm": "^11.1.0"
+  }
+}

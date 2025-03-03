@@ -12,7 +12,6 @@
             <main>
                 <div class="authentication">
                     <div class="authenticationLeft">
-                        <!-- maglagay kau d2 ng kung ano -->
                     </div>
                     <div class="authenticationRightContainer">
                         <img src="images/logo.jpg" alt="Profile">
@@ -30,32 +29,34 @@
                                 <div class="nameFields">
                                     <div>
                                         <label for="fName">First Name:</label>
-                                        <input type="firstName" placeholder="First Name" class="authInput">
+                                        <input type="text" id="firstName" placeholder="First Name" class="authInput">
                                     </div>
                                     <div>
                                         <label for="lName">Last Name:</label>
-                                        <input type="lastName" placeholder="Last Name" class="authInput">
+                                        <input type="text" id="lastName" placeholder="Last Name" class="authInput">
                                     </div>
                                 </div>
                                 <label for="email">Email:</label>
-                                <input type="email" placeholder="Email" class="authInput">
+                                <input type="email" id="email" placeholder="Email" class="authInput">
                                 <label for="password">Password:</label>
-                                <input type="password" placeholder="Password" class="authInput">
+                                <input type="password" id="password" placeholder="Password" class="authInput">
                                 <br>
-                                <button class="authSubmit">Signup</button>
+                                <button id="signupSubmit" class="authSubmit">Signup</button>
                             </div>
                             <div id="loginForm" class="authForm">
                                 <label for="email">Email:</label>
-                                <input type="email" placeholder="Email" class="authInput">
+                                <input type="email" id="loginEmail" placeholder="Email" class="authInput">
                                 <label for="password">Password:</label>
-                                <input type="password" placeholder="Password" class="authInput">
+                                <input type="password" id="loginPassword" placeholder="Password" class="authInput">
                                 <br>
-                                <button class="authSubmit">Login</button>
+                                <button id="loginSubmit" class="authSubmit">Login</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
+        <script src="LOGIN SIGNUP.js"></script>
+        <script src="SIGNUP.js"></script>
     </body>
 </html>
