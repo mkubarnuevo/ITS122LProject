@@ -3,10 +3,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("logoutBtn").addEventListener("click", async () => {
         try {
-            const res = await fetch("http://127.0.0.1:3000/logout", { method: "POST", credentials: "include" });
+            const res = await fetch("http://127.0.0.1:3000/logout", {
+                method: "POST",
+                credentials: "include",
+            });
             const data = await res.json();
 
             console.log("Logout Response:", data);
+
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            } else {
+                alert(data.message);
+            }
 
             setTimeout(async () => {
                 await updateButtons();

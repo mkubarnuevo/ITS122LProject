@@ -78,7 +78,12 @@ router.post("/login", async (req, res) => {
             return res.status(401).json({ message: "Invalid email or password." });
         }
 
-        req.session.user = { id: user._id, email: user.email };
+        req.session.user = {
+            _id: user._id.toString(),
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+        };
         console.log("Login Successful:", req.session.user);
         res.json({ message: "Login successful!", user: req.session.user });
 
@@ -113,7 +118,7 @@ router.post("/logout", (req, res) => {
         res.clearCookie("ITS122LsessionCookies");
         
         console.log("User successfully logged out.");
-        return res.json({ message: "Logged out successfully" });
+        return res.json({ message: "Logged out successfully", redirect: "LOGIN SIGNUP.html" });
     });
 });
 
