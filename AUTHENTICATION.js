@@ -37,7 +37,16 @@ router.post("/signup", async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        await usersCollection.insertOne({ firstName, lastName, email, password: hashedPassword });
+
+        const newUser = {
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword,
+            admin: false
+        };
+
+        await usersCollection.insertOne(newUser);
         
         console.log("User Registered Successfully:", email);
         res.status(201).json({ message: "User registered successfully" });
@@ -46,7 +55,6 @@ router.post("/signup", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
-
 
 // LOGIN
 router.post("/login", async (req, res) => {
