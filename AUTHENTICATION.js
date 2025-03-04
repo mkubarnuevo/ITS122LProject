@@ -52,26 +52,62 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
-    console.log("Login Request Received:", { email, password });
+    if (!email || !password) {
+        return res.status(400).json({ message: "All fields are required." });
+    }
 
     try {
         const user = await usersCollection.findOne({ email });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(401).json({ message: "Invalid email or password" });
+
+        if (!user) {
+            console.log("Login Failed: User not found");
+            return res.status(401).json({ message: "Invalid email or password." });
         }
 
-        req.session.user = { _id: user._id, email: user.email };
-        res.status(200).json({ message: "Login successful" });
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            console.log("Login Failed: Incorrect password");
+            return res.status(401).json({ message: "Invalid email or password." });
+        }
+
+        req.session.user = { id: user._id, email: user.email };
+        console.log("Login Successful:", req.session.user);
+        res.json({ message: "Login successful!", user: req.session.user });
+
     } catch (error) {
         console.error("Login error:", error);
-        res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: "Internal server error." });
+    }
+});
+
+
+// SESSION CHECK
+router.get("/session", (req, res) => {
+    if (req.session && req.session.user) {
+        console.log("Session Active:", req.session.user);
+        res.json({ isLoggedIn: true, user: req.session.user });
+    } else {
+        console.log("No active session.");
+        res.json({ isLoggedIn: false });
     }
 });
 
 // LOGOUT
 router.post("/logout", (req, res) => {
     console.log("Logout Request Received");
-    req.session.destroy(() => res.json({ message: "Logged out" }));
+    
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Logout error:", err);
+            return res.status(500).json({ message: "Logout failed." });
+        }
+
+        res.clearCookie("ITS122LsessionCookies");
+        
+        console.log("User successfully logged out.");
+        return res.json({ message: "Logged out successfully" });
+    });
 });
+
 
 module.exports = router;

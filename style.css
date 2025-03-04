@@ -49,12 +49,12 @@ body, html {
 .left-topbar button {
     border: none;
     background-color: transparent;
-    padding: 0; /* Remove padding from the button */
+    padding: 0;
     cursor: pointer;
     height: 100%;
-    display: flex; /* Use flexbox for the button */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 25px;
 }
 
@@ -63,8 +63,8 @@ body, html {
     width: auto;
     object-fit: contain;
     max-width: 70px;
-    padding: 5px; /* Add padding to the image */
-    box-sizing: border-box; /* Include padding in the image size */
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .left-topbar .title {
@@ -120,6 +120,15 @@ body, html {
 .right-topbar button.active {
     font-weight: bold;
 }
+
+#loginSignupBtn {
+    display: block;
+}
+
+#profileBtn {
+    display: none;
+}
+
 /* ===================================================================== */
 
 /* ===================================================================== */

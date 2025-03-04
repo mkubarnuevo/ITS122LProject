@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Switch Test</title>
+</head>
+<body>
+    <li id="loginSignupBtn">
+        <button>SIGNUP/LOGIN</button>
+    </li>
+    <li id="profileBtn" style="display: none;">
+        <button>PROFILE</button>
+    </li>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginSignupBtn = document.getElementById("loginSignupBtn");
+            const profileBtn = document.getElementById("profileBtn");
+
+            // Simulate isLoggedIn: true
+            // Simulate isLoggedIn: false
+            const isLoggedIn = true; // Change this to false to test both
+
+            if (isLoggedIn) {
+                loginSignupBtn.style.display = "none";
+                profileBtn.style.display = "block";
+            } else {
+                loginSignupBtn.style.display = "block";
+                profileBtn.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

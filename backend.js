@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
+const MongoStore = require("connect-mongo");
 const connectDB = require("./DATABASE CONNECTION");
 const authenticationRoute = require("./AUTHENTICATION");
 
@@ -8,17 +9,22 @@ const app = express();
 const PORT = 3000;
 
 app.use(cors({
-    origin: "http://127.0.0.1:5500",
-    credentials: true
+    origin: ['http://127.0.0.1:5500'],
+    credentials: true,
 }));
-app.use(express.json());
+
 
 app.use(
     session({
         secret: "ITS122L",
         resave: false,
         saveUninitialized: false,
+        store: MongoStore.create({
+            mongoUrl: "mongodb+srv://mkubarnuevo:userpassword234@schoolproject.rhlaw.mongodb.net/ITS122L",
+            collectionName: "sessions"
+        }),
         cookie: {
+            name: "ITS122LsessionCookies",
             secure: false,
             httpOnly: true,
             sameSite: "lax",
@@ -26,6 +32,9 @@ app.use(
         }
     })
 );
+
+
+app.use(express.json());
 
 const startServer = async () => {
     try {
@@ -44,5 +53,7 @@ const startServer = async () => {
         process.exit(1);
     }
 };
+
+module.exports = app;
 
 startServer();
