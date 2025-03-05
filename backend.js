@@ -4,6 +4,7 @@ const cors = require("cors");
 const MongoStore = require("connect-mongo");
 const connectDB = require("./DATABASE CONNECTION");
 const authenticationRoute = require("./AUTHENTICATION");
+const profileUpdateRoutes = require("./PROFILE UPDATE"); 
 
 const app = express();
 const PORT = 3000;
@@ -35,6 +36,7 @@ app.use(
 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const startServer = async () => {
     try {
@@ -46,6 +48,8 @@ const startServer = async () => {
         console.log("Connected to MongoDB");
 
         app.use("/", authenticationRoute);
+
+        app.use("/", profileUpdateRoutes);
 
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     } catch (err) {

@@ -204,33 +204,51 @@ body, html {
     font-size: 18px;
 }
 
-.profileFields input[type="text"],
-.profileFields input[type="tel"],
-.profileFields input[type="number"] {
+.profileFields input[type="text"] {
     width: calc(100% - 16px);
     padding: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border: 2px solid #ddd;
     border-radius: 6px;
     font-size: 18px;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-.submitButton {
-    background-color: #F57E9A;
-    color: white;
-    padding: 16px 24px;
+.profileFields input[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.editButton, .saveButton {
+    width: 100%;
+    padding: 14px;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
     font-size: 18px;
     font-weight: 600;
-    width: calc(100% - 16px);
-    display: block;
-    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+    margin-top: 10px;
 }
 
-.submitButton:hover {
+.editButton {
+    background-color: #F57E9A;
+    color: white;
+}
+
+.editButton:hover {
     background-color: #e66181;
+}
+
+.saveButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.saveButton:hover {
+    background-color: #388E3C;
 }
 /* ===================================================================== */
 
