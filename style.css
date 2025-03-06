@@ -470,6 +470,117 @@ body, html {
 /* ===================================================================== */
 
 /* ===================================================================== */
+/* PET ANIMALS.html */
+/* ===================================================================== */
+.pet-section {
+    background-color: #F57E9A;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.pet-section h1 {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: white;
+    margin: 10px 0 0;
+    text-align: center; 
+}
+
+/* Image Gallery Design */
+div.gallery {
+    margin: 11px; 
+    border: 1px solid #ccc; 
+    display: inline-block; 
+    width: 200px; 
+    text-align: center; 
+    overflow: hidden; 
+}
+
+div.gallery:hover {
+    border: 1px solid #777; 
+}
+
+div.gallery img {
+    width: 100%; 
+    height: 400px; 
+    object-fit: cover; 
+    display: block; 
+}
+
+.gallery-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+/* Adopt Images with Descriptions */
+.adopt {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    width: 570px; 
+    padding: 20px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+
+.image-placeholder {
+    width: 300px; 
+    height: 400px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info {
+    margin-left: 30px;
+    flex: 1;
+}
+
+.info h3 {
+    margin: 4;
+    font-size: 1.3em;
+}
+
+.info p {
+    margin: 4px 0;
+    font-size: 0.93em;
+}
+
+.adopt-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    margin-top: 40px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* ===================================================================== */
+
+/* ===================================================================== */
 /* SUPPORT US.html */
 /* ===================================================================== */
 .supportusContainer {
