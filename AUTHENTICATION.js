@@ -60,7 +60,10 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
+    console.log("Login request received (authentication.js):", email);
+
     if (!email || !password) {
+        console.log("Login failed: Missing credentials (authentication.js)");
         return res.status(400).json({ message: "All fields are required." });
     }
 
@@ -68,40 +71,79 @@ router.post("/login", async (req, res) => {
         const user = await usersCollection.findOne({ email });
 
         if (!user) {
-            console.log("Login Failed: User not found");
+            console.log("Login failed: User not found (authentication.js)");
             return res.status(401).json({ message: "Invalid email or password." });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            console.log("Login Failed: Incorrect password");
+            console.log("Login failed: Incorrect password (authentication.js)");
             return res.status(401).json({ message: "Invalid email or password." });
         }
 
         req.session.user = {
-            _id: user._id.toString(),
+            _id: user._id,
             email: user.email,
             firstName: user.firstName,
             lastName: user.lastName,
+            admin: user.admin,
         };
-        console.log("Login Successful:", req.session.user);
-        res.json({ message: "Login successful!", user: req.session.user });
 
+        req.session.save((err) => {
+            if (err) {
+                console.error("Session save error (authentication.js):", err);
+                return res.status(500).json({ message: "Internal server error" });
+            }
+
+            console.log("Login successful (authentication.js):", req.session.user);
+            res.json({ message: "Login successful!", user: req.session.user });
+        });
     } catch (error) {
-        console.error("Login error:", error);
+        console.error("Login error (authentication.js):", error);
         res.status(500).json({ message: "Internal server error." });
     }
 });
 
-
 // SESSION CHECK
-router.get("/session", (req, res) => {
-    if (req.session && req.session.user) {
-        console.log("Session Active:", req.session.user);
-        res.json({ isLoggedIn: true, user: req.session.user });
-    } else {
-        console.log("No active session.");
-        res.json({ isLoggedIn: false });
+router.get("/session", async (req, res) => {
+    console.log("Session request received (authentication.js)");
+    console.log("req.session:", req.session);
+
+    try {
+        if (req.session && req.session.user) {
+            console.log("Session and user found (authentication.js)");
+
+            try {
+                const user = await usersCollection.findOne({ _id: new ObjectId(req.session.user._id) });
+
+                if (user) {
+                    console.log("User found in database (authentication.js):", user);
+
+                    res.json({
+                        isLoggedIn: true,
+                        user: {
+                            _id: user._id,
+                            email: user.email,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            admin: user.admin,
+                        },
+                    });
+                } else {
+                    console.log("User not found in database (authentication.js)");
+                    res.status(401).json({ isLoggedIn: false });
+                }
+            } catch (dbError) {
+                console.error("Database error (authentication.js):", dbError);
+                res.status(500).json({ isLoggedIn: false });
+            }
+        } else {
+            console.log("No session or user (authentication.js)");
+            res.status(401).json({ isLoggedIn: false });
+        }
+    } catch (error) {
+        console.error("Session error (authentication.js):", error);
+        res.status(500).json({ isLoggedIn: false });
     }
 });
 
@@ -121,6 +163,5 @@ router.post("/logout", (req, res) => {
         return res.json({ message: "Logged out successfully", redirect: "LOGIN SIGNUP.html" });
     });
 });
-
 
 module.exports = router;
