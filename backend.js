@@ -4,16 +4,16 @@ const cors = require("cors");
 const MongoStore = require("connect-mongo");
 const connectDB = require("./DATABASE CONNECTION");
 const authenticationRoute = require("./AUTHENTICATION");
-const profileUpdateRoutes = require("./PROFILE UPDATE"); 
+const profileUpdateRoutes = require("./PROFILE UPDATE");
+const adoptionRoute = require("./ADOPTION CONNECT"); 
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors({
-    origin: ['http://127.0.0.1:5500'],
-    credentials: true,
-}));
-
+    origin: "http://127.0.0.1:5500",
+    credentials: true
+}));  
 
 app.use(
     session({
@@ -50,6 +50,8 @@ const startServer = async () => {
         app.use("/", authenticationRoute);
 
         app.use("/", profileUpdateRoutes);
+
+        app.use("/", adoptionRoute);
 
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     } catch (err) {

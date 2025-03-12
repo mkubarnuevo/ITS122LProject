@@ -679,6 +679,45 @@ input:focus {
     background-color: #333;
 }
 
+.applications-container {
+    width: 80%;
+    margin: 20px auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.application-tab {
+    background-color: #F57E9A;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.application-tab:hover {
+    background-color: #e66181;
+}
+
+#applicationDetails {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.application-profile {
+    line-height: 1.6;
+}
+
+.application-profile h3 {
+    margin-bottom: 15px;
+}
+
+.application-profile strong {
+    font-weight: bold;
+}
+
 /* ===================================================================== */
 
 /* ===================================================================== */
