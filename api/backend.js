@@ -3,10 +3,10 @@ const session = require("express-session");
 const cors = require("cors");
 const MongoStore = require("connect-mongo");
 const path = require('path');
-const connectDB = require("./DATABASE CONNECTION");
-const authenticationRoute = require("./AUTHENTICATION");
-const profileUpdateRoutes = require("./PROFILE UPDATE");
-const adoptionRoute = require("./ADOPTION CONNECT");
+const connectDB = require("../DATABASE CONNECTION");
+const authenticationRoute = require("../AUTHENTICATION");
+const profileUpdateRoutes = require("../PROFILE UPDATE");
+const adoptionRoute = require("../ADOPTION CONNECT");
 
 const app = express();
 const PORT = 3000;
