@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    // ✅ Dynamically determine the API base URL
+    const baseUrl = window.location.origin.includes("localhost")
+        ? "http://127.0.0.1:3000"
+        : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
+
     try {
-        const response = await fetch("http://127.0.0.1:3000/session", {
+        const response = await fetch(`${baseUrl}/session`, {
             method: "GET",
             credentials: "include",
         });
@@ -12,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("firstName").value = data.user.firstName;
             document.getElementById("lastName").value = data.user.lastName;
             document.getElementById("email").value = data.user.email;
-            await setupProfileEditing();
+            await setupProfileEditing(baseUrl); // ✅ Pass baseUrl for API requests
         } else {
             alert("You are not logged in!");
             window.location.href = "LOGIN SIGNUP.html";
@@ -22,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-async function setupProfileEditing() {
+async function setupProfileEditing(baseUrl) {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
     if (!user) {
@@ -65,7 +70,7 @@ async function setupProfileEditing() {
             email: emailInput.value,
         };
 
-        fetch(`http://127.0.0.1:3000/update-profile/${user._id}`, {
+        fetch(`${baseUrl}/update-profile/${user._id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
