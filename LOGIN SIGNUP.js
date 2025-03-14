@@ -1,17 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const authButtons = document.querySelectorAll('.authButton');
-    const authForms = document.querySelectorAll('.authForm');
+    // ✅ Dynamically determine the API base URL
+    const baseUrl = window.location.origin.includes("localhost")
+        ? "http://127.0.0.1:3000"
+        : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
 
-    authButtons.forEach(button => {
-        button.addEventListener('click', () => {
+    const authButtons = document.querySelectorAll(".authButton");
+    const authForms = document.querySelectorAll(".authForm");
+
+    authButtons.forEach((button) => {
+        button.addEventListener("click", () => {
             const authType = button.dataset.auth;
             console.log(`Switching to: ${authType}`);
 
-            authButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            authButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
 
-            authForms.forEach(form => form.classList.remove('active'));
-            document.getElementById(`${authType}Form`).classList.add('active');
+            authForms.forEach((form) => form.classList.remove("active"));
+            document.getElementById(`${authType}Form`).classList.add("active");
         });
     });
 
@@ -27,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             console.log("Sending request to backend...");
-            const response = await fetch("http://127.0.0.1:3000/signup", {
+            const response = await fetch(`${baseUrl}/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -59,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             console.log("Sending request to backend...");
-            const response = await fetch("http://127.0.0.1:3000/login", {
+            const response = await fetch(`${baseUrl}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
