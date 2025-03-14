@@ -9,7 +9,7 @@ const profileUpdateRoutes = require("./PROFILE UPDATE");
 const adoptionRoute = require("./ADOPTION CONNECT");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8000;
 
 app.use(cors({
     origin: "http://127.0.0.1:5500",
@@ -57,13 +57,11 @@ const startServer = async () => {
         app.use("/", profileUpdateRoutes);
         app.use("/", adoptionRoute);
 
-        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+        app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));
     } catch (err) {
         console.error("Failed to start server:", err);
         process.exit(1);
     }
 };
-
-module.exports = app;
 
 startServer();
