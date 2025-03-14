@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ✅ Dynamically determine the API base URL
     const baseUrl = window.location.origin.includes("localhost")
         ? "http://127.0.0.1:3000"
         : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
