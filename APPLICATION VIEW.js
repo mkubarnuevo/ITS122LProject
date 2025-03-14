@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const applicationDetails = document.getElementById('applicationDetails');
     let currentApplicationId = null;
 
-    // ✅ Dynamically determine the API base URL
     const baseUrl = window.location.origin.includes("localhost")
         ? "http://localhost:3000"
         : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`${baseUrl}/adoption_applications`)
             .then(response => response.json())
             .then(applications => {
-                applicationsTabs.innerHTML = ""; // ✅ Clear previous entries to avoid duplicates
+                applicationsTabs.innerHTML = "";
                 applications.forEach((application, index) => {
                     const tab = document.createElement('div');
                     tab.classList.add('application-tab');
