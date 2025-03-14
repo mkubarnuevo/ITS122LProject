@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("logoutBtn").addEventListener("click", async () => {
         try {
-            const res = await fetch("http://127.0.0.1:3000/logout", {
+            const baseUrl = window.location.origin.includes("localhost")
+                ? "http://127.0.0.1:3000"
+                : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
+
+            const res = await fetch(`${baseUrl}/logout`, {
                 method: "POST",
                 credentials: "include",
             });
-            const data = await res.json();
 
+            const data = await res.json();
             console.log("Logout Response:", data);
 
             if (data.redirect) {
@@ -31,7 +35,11 @@ async function updateButtons() {
     try {
         console.log("Fetching session data (BUTTON SWITCH.js)");
 
-        const res = await fetch("http://127.0.0.1:3000/session", {
+        const baseUrl = window.location.origin.includes("localhost")
+            ? "http://127.0.0.1:3000"
+            : "https://wealthy-hawk-its122lproject-400edd60.koyeb.app";
+
+        const res = await fetch(`${baseUrl}/session`, {
             credentials: "include",
         });
 
